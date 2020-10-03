@@ -1,0 +1,328 @@
+@import "normalize";
+@import "layout";
+@import "elements";
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600;700&display=swap");
+@import "hamburgers.scss";
+
+body {
+}
+
+/* Layout */
+.ba-container {
+  padding-left: 20px;
+  padding-right: 20px;
+  max-width: 1079px;
+}
+.ba-container--small{
+	padding-left: 20px;
+	padding-right: 20px;
+	max-width: 927px;
+	margin: 0 auto;
+}
+//---------------------------= Mobile menu =--------------------------------
+.ba-header{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1;
+  &.is-active{
+	  position: fixed;
+  }
+  &__wrapper {
+	 display: flex;
+    justify-content: space-between;
+    padding-top: 29px;
+    vertical-align: middle;
+	 width: 100%;
+  }
+}
+.ba-logo {
+  position: relative;
+  z-index: 3;
+}
+.ba-nav {
+  position: fixed;
+  top: 100%;
+  left: -100%;
+  height: 100%;
+  z-index: 2;
+  width: 100%;
+  padding-top: 20vh;
+  padding-bottom: 11vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: auto;
+  &__wrapper {
+    padding-left: 90px;
+    display: flex;
+    flex-direction: column;
+	 justify-content: space-between;
+  }
+  &__list {
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+    margin: 0;
+	 padding: 0;
+  }
+  &__item {
+	 padding-bottom: 20px;
+  }
+  &__link {
+    font: 500 20px/24px "Montserrat", sans-serif;
+    text-decoration: none;
+    color: #31302c;
+	 display:inline-block;
+	 cursor: pointer;
+    &:after {
+		display:block;
+      content: "";
+      height: 2.5px;
+		opacity: 0;
+		margin-top: 5px;
+		transform: translateY(-100%);
+		background-color: #d7a6dc;
+      transition: 0.3s ease-in-out;
+    }
+    &:hover:after {
+		opacity: 1;
+		transform: translateY(0);
+    }
+    &:active:after,
+    &:focus:after {
+      width: 0%;
+    }
+    &:active,
+    &:focus {
+      color: #c27eb7;
+    }
+  }
+  &__language {
+    font: 600 20px/24px "Montserrat", sans-serif;
+    text-decoration: none;
+    color: #31302c;
+	 margin: auto 0;
+	 padding-bottom: 20px;
+  }
+  &.is-active {
+    transition: all 0.5s ease 0s;
+    left: 0;
+    background: #fef5ff;
+  }
+}
+.ba-contacts {
+  display: flex;
+  flex-direction: column;
+  &__title {
+    text-transform: uppercase;
+    font-family: Montserrat;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 20px;
+    text-align: center;
+    color: #31302c;
+    margin: 0;
+    padding-bottom: 25px;
+  }
+  &__tel {
+    text-decoration: none;
+    color: #31302c;
+    font-family: Montserrat;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 17px;
+    text-align: center;
+    padding-bottom: 20px;
+    & + & {
+      padding-bottom: 0;
+    }
+  }
+}
+.ba-socials {
+  text-align: center;
+  padding-top: 70px;
+  &__link {
+	 text-decoration: none;
+	 padding-right: 26px;
+	 &:last-child{
+		padding-right: 0;
+	 }
+  }
+  &__icon {
+    width: 24px;
+    height: 24px;
+  }
+}
+.hamburger {
+  z-index: 3;
+  outline: none;
+}
+//-----------------------= Tablet menu =---------------------
+@media screen and (min-width: 640px) {
+	.ba-header {
+	  position: absolute;
+	  top: 0;
+	  left: 0;
+	  width: 100%;
+	  z-index: 1;
+	  &__wrapper {
+		 display: flex;
+		 flex-direction: row;
+		 justify-content: space-between;
+		 padding-top: 29px;
+		 width: 100%;
+		 align-items: center;
+	  }
+	}
+	.ba-nav {
+	  width: 65%;
+	  justify-content: space-between;
+	  margin: 0;
+	  padding-top: unset;
+	  padding-left: 0;
+	  padding-bottom: 0;
+	  position: unset;
+	  background-color: unset;
+	  justify-content: space-between;
+	  &__wrapper {
+		 display: flex;
+		 flex-direction: row;
+		 justify-content: space-between;
+		 margin: 0;
+		 padding-top: unset;
+		 padding-left: 0;
+		 position: unset;
+		 background-color: unset;
+	  }
+	  &__list {
+		 display: flex;
+		 flex-direction: row;
+		 list-style: none;
+		 align-items:center;
+		 padding-top: 5px;
+	  }
+	  &__item {
+		 padding-bottom: 0;
+	  }
+	  &__link {
+		 font: 400 20px/20px "Montserrat", sans-serif;
+		 text-decoration: none;
+		 color: #31302c;
+		padding-right: 30px;
+		 &:last-child {
+		padding-right: 0;
+		 }
+	  }
+	  &__language {
+		 font: 600 20px/20px "Montserrat", sans-serif;
+		 text-decoration: none;
+		 color: #31302c;
+		 padding-bottom: 0;
+	  }
+	}
+	.hamburger {
+	  display: none;
+	}
+	.ba-contacts {
+		display: none;
+	 }
+}
+//-----------------------= Desktop menu =--------------------
+@media screen and (min-width: 1024px) {
+  .ba-nav {
+    &__link {
+      font: 400 20px/24px "Montserrat", sans-serif;
+      padding-right: 78px;
+    }
+    &__language {
+      font: 600 20px/24px "Montserrat", sans-serif;
+      text-decoration: none;
+      color: #31302c;
+      margin: auto 0;
+    }
+  }
+  .hamburger {
+    display: none;
+  }
+  .ba-contacts {
+	display: none;
+ }
+}
+
+//----------------= Section "intro" =--------------------
+.ba-intro {
+  position: relative;
+  background-image: url(../img/Intro-bg__mobile.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  @media screen and (min-width: 1025px) {
+    background-image: url(../img/Intro-bg.png);
+  }
+  &__wrapper {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: #31302c;
+  }
+  &__title {
+    font-family: Montserrat;
+    font-weight: 700;
+    font-size: 48px;
+    line-height: 59px;
+    text-transform: uppercase;
+    margin: 0;
+    @media screen and (min-width: 640px) {
+      font-size: 96px;
+      line-height: 117px;
+    }
+  }
+  &__subtitle {
+    margin: 0;
+    font-family: Montserrat;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 20px;
+    @media screen and (min-width: 640px) {
+      font-size: 24px;
+      line-height: 29px;
+      padding-bottom: 40px;
+    }
+  }
+}
+//-----------= "About us" section =-----------------
+
+.ba-about{
+	background-color:  #E5E5E5;
+	min-height: 100vh;
+}
+.ba-portrait{
+display: flex;
+justify-content: space-between;
+&__wrapper{
+	max-width: 69%;
+}
+}
+.ba-differences{
+	display: flex;
+justify-content: space-between;
+&__wrapper{
+	max-width: 69%;
+	display: flex;
+justify-content: space-between;
+flex-wrap: wrap;
+}
+&__card{
+}
+}
+.ba-coll{
+	max-width: 40%;
+}
+
+
+
+.hidden {
+	display: none;
+ }
