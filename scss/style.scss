@@ -1,0 +1,878 @@
+@import "normalize";
+@import "layout";
+@import "elements";
+@import "slick.scss";
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@900&display=swap");
+@import "hamburgers.scss";
+
+html {
+  scroll-behavior: smooth;
+}
+body {
+	background-color: #e5e5e5;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h5,
+li,
+ul,
+p {
+  margin: 0;
+  padding: 0;
+}
+img {
+  pointer-events: none;
+}
+/* Layout */
+.ba-container {
+  padding-left: 20px;
+  padding-right: 20px;
+  max-width: 1079px;
+}
+.ba-container--small {
+  padding-left: 20px;
+  padding-right: 20px;
+  max-width: 927px;
+  margin: 0 auto;
+}
+.ba-container--slider {
+  max-width: 1079px;
+  margin: 0 auto;
+  @media screen and (min-width: 640px) {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+//---------------------------= Mobile menu =--------------------------------
+.ba-header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1;
+  &.is-active {
+    position: fixed;
+  }
+  &__wrapper {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 29px;
+    vertical-align: middle;
+    width: 100%;
+  }
+}
+.ba-logo {
+  position: relative;
+  z-index: 3;
+}
+.ba-nav {
+  position: fixed;
+  top: 0;
+  left: -100%;
+  height: 100%;
+  z-index: 2;
+  width: 100%;
+  padding-top: 20vh;
+  padding-bottom: 11vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: auto;
+  &.is-active {
+    transition: all 0.5s ease 0s;
+    left: 0;
+    background: #fef5ff;
+  }
+  &__wrapper {
+    padding-left: 90px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  &__list {
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  &__item {
+    padding-bottom: 20px;
+  }
+  &__link {
+    font: 500 20px/24px "Montserrat", sans-serif;
+    text-decoration: none;
+    color: #31302c;
+    display: inline-block;
+    cursor: pointer;
+    &:after {
+      display: block;
+      content: "";
+      height: 2.5px;
+      opacity: 0;
+      margin-top: 5px;
+      transform: translateY(-100%);
+      background-color: #d7a6dc;
+      transition: 0.3s ease-in-out;
+    }
+    &:hover:after {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    &:active:after,
+    &:focus:after {
+      width: 0%;
+    }
+    &:active,
+    &:focus {
+      color: #c27eb7;
+    }
+  }
+  &__language {
+    font: 600 20px/24px "Montserrat", sans-serif;
+    text-decoration: none;
+    color: #31302c;
+    margin: auto 0;
+    padding-bottom: 20px;
+  }
+}
+.ba-contacts {
+  display: flex;
+  flex-direction: column;
+  &__title {
+    text-transform: uppercase;
+    font-family: Montserrat;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 20px;
+    text-align: center;
+    color: #31302c;
+    margin: 0;
+    padding-bottom: 25px;
+  }
+  &__tel {
+    text-decoration: none;
+    color: #31302c;
+    font-family: Montserrat;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 17px;
+    text-align: center;
+    padding-bottom: 20px;
+    & + & {
+      padding-bottom: 0;
+    }
+  }
+}
+.ba-socials {
+  text-align: center;
+  padding-top: 70px;
+  &__link {
+    text-decoration: none;
+    padding-right: 26px;
+    &:last-child {
+      padding-right: 0;
+    }
+  }
+  &__icon {
+    width: 24px;
+    height: 24px;
+  }
+}
+
+.hamburger {
+  z-index: 3;
+  outline: none;
+}
+//-----------------------= Tablet menu =---------------------
+@media screen and (min-width: 640px) {
+  .ba-header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1;
+    &__wrapper {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      padding-top: 29px;
+      width: 100%;
+      align-items: center;
+    }
+  }
+  .ba-nav {
+    width: 65%;
+    justify-content: space-between;
+    margin: 0;
+    padding-top: unset;
+    padding-left: 0;
+    padding-bottom: 0;
+    position: unset;
+    background-color: unset;
+    justify-content: space-between;
+    &__wrapper {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      margin: 0;
+      padding-top: unset;
+      padding-left: 0;
+      position: unset;
+      background-color: unset;
+    }
+    &__list {
+      display: flex;
+		flex-direction: row;
+		width:70%;
+      list-style: none;
+      align-items: center;
+      padding-top: 5px;
+    }
+    &__item {
+		padding-bottom: 0;
+		padding-right: 20px;
+		&:last-child {
+			padding-right: 0;
+		 }
+    }
+    &__link {
+      font: 400 18px/20px "Montserrat", sans-serif;
+      text-decoration: none;
+      color: #31302c;
+		white-space: nowrap;
+    }
+    &__language {
+      font: 600 20px/20px "Montserrat", sans-serif;
+      text-decoration: none;
+      color: #31302c;
+      padding-bottom: 0;
+    }
+  }
+  .hamburger {
+    display: none;
+  }
+  .ba-contacts {
+    display: none;
+  }
+}
+//-----------------------= Desktop menu =--------------------
+@media screen and (min-width: 1024px) {
+  .ba-nav {
+	  width: 65%;
+    &__link {
+      font: 400 20px/24px "Montserrat", sans-serif;
+      padding-right: 78px;
+    }
+    &__language {
+      font: 600 20px/24px "Montserrat", sans-serif;
+      text-decoration: none;
+      color: #31302c;
+      margin: auto 0;
+    }
+  }
+  .hamburger {
+    display: none;
+  }
+  .ba-contacts {
+    display: none;
+  }
+}
+//----------------= Section "intro" =--------------------
+.ba-intro {
+  position: relative;
+  background-image: url(../img/intro-bg-mob.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  @media screen and (min-width: 1025px) {
+    background-image: url(../img/intro-bg-dt.jpg);
+  }
+  &__wrapper {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: #31302c;
+  }
+  &__title {
+    font-family: Montserrat;
+    font-weight: 700;
+    font-size: 40px;
+    line-height: 59px;
+    text-transform: uppercase;
+    margin: 0;
+    @media screen and (min-width: 640px) {
+      font-size: 96px;
+      line-height: 117px;
+    }
+  }
+  &__subtitle {
+    margin: 0;
+    font-family: Montserrat;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 20px;
+    @media screen and (min-width: 640px) {
+      font-size: 24px;
+      line-height: 29px;
+      padding-bottom: 40px;
+    }
+  }
+}
+//-----------= "About us" section =-----------------
+
+.ba-about {
+  background-color: #e5e5e5;
+  color: #31302c;
+  font-family: Montserrat;
+  &__wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 62px 0;
+    @media screen and (min-width: 640px) {
+      padding: 50px 25px;
+    }
+    @media screen and (min-width: 1024px) {
+      padding: 100px 0;
+    }
+  }
+}
+.ba-portrait {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  @media screen and (min-width: 640px) {
+    flex-direction: row;
+  }
+  &__wrapper {
+    max-width: 100%;
+    @media screen and (min-width: 640px) {
+      max-width: 71%;
+    }
+  }
+  &__aside {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 20px;
+    padding-bottom: 40px;
+    @media screen and (min-width: 640px) {
+      padding-top: 25px;
+      padding-bottom: 0;
+    }
+  }
+  &__title {
+    font-weight: 600;
+    font-size: 22px;
+    line-height: 27px;
+    padding-bottom: 25px;
+    border-bottom: 3px solid #d7a6dc;
+    @media screen and (min-width: 1024px) {
+      font-size: 24px;
+      line-height: 29px;
+      padding-bottom: 30px;
+      text-align: justify;
+    }
+  }
+  &__description {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 20px;
+    padding-top: 40px;
+    @media screen and (min-width: 1024px) {
+      font-size: 20px;
+      line-height: 24px;
+      text-align: justify;
+    }
+  }
+}
+.ba-differences {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  max-width: 76%;
+  margin: 0 auto;
+  padding-top: 80px;
+  @media screen and (min-width: 640px) {
+    flex-direction: row;
+    padding-top: 100px;
+    max-width: 100%;
+  }
+
+  &__wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    @media screen and (min-width: 640px) {
+      flex-direction: row;
+      justify-content: space-between;
+      max-width: 71%;
+    }
+  }
+  &__aside {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 20px;
+    padding-bottom: 9px;
+    @media screen and (min-width: 640px) {
+      padding-top: 25px;
+      padding-bottom: 0;
+    }
+  }
+  &__title {
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 20px;
+    padding-bottom: 20px;
+    border-bottom: 3px solid #d7a6dc;
+    @media screen and (min-width: 640px) {
+      font-size: 18px;
+      line-height: 22px;
+    }
+  }
+  &__description {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    padding-top: 20px;
+    @media screen and (min-width: 640px) {
+      font-size: 16px;
+      line-height: 20px;
+    }
+  }
+  &__card {
+    padding-top: 30px;
+    @media screen and (min-width: 640px) {
+      padding-top: 0;
+    }
+  }
+}
+.ba-col {
+  max-width: 255px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  @media screen and (min-width: 640px) {
+    max-width: 40%;
+    min-height: 311px;
+  }
+}
+.hidden {
+  display: none;
+}
+//-------------------=Section "Our works"=-----------------
+.ba-projects {
+  background-color: #e5e5e5;
+  text-align: left;
+  padding-bottom: 100px;
+  &__title {
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 28px;
+    line-height: 1.22;
+    text-align: justify;
+    color: #31302c;
+    padding-bottom: 15px;
+    border-bottom: 3px solid #d7a6dc;
+    display: inline-block;
+    margin-left: 20px;
+    @media screen and (min-width: 640px) {
+      margin-left: 0;
+      font-size: 36px;
+      line-height: 1.22;
+    }
+  }
+}
+.ba-slide {
+  padding-right: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  &__signature {
+    background-color: #444444;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    font-family: Montserrat;
+    font-weight: 400;
+    font-size: 8px;
+    line-height: 1.25;
+    color: #fef5ff;
+    min-height: 75px;
+    padding: 15px 15px;
+    @media screen and (min-width: 1024px) {
+      font-size: 12px;
+      line-height: 1.25;
+      min-height: 100px;
+    }
+  }
+  &__bold {
+    font-weight: 500;
+    font-size: 12px;
+    padding-bottom: 10px;
+    @media screen and (min-width: 1024px) {
+      font-size: 16px;
+    }
+  }
+}
+.ba-slider {
+  position: relative;
+  padding-top: 50px;
+  @media screen and (min-width: 640px) {
+    padding-left: 100px;
+    padding-right: 100px;
+  }
+  &__prev {
+    background-image: url(../img/arrow-left.png);
+    left: 0;
+    &:active,
+    &:focus {
+      background-image: url(../img/Scroll_L-active.png);
+      outline: none;
+    }
+  }
+  &__next {
+    background-image: url(../img/arrow-right.png);
+    right: 0;
+    &:active,
+    &:focus {
+      background-image: url(../img/Scroll_R-active.png);
+      outline: none;
+    }
+  }
+}
+.arrow {
+  display: none;
+  @media screen and (min-width: 640px) {
+    margin: 0;
+    padding: 0;
+    border: none;
+    width: 65px;
+    height: 70px;
+    position: absolute;
+    top: calc(50% - 35px);
+  }
+}
+//--------------= Scheme of the work =-----------------
+.ba-scheme {
+  background-color: #444444;
+  text-align: center;
+  @media screen and (min-width: 640px) {
+    text-align: left;
+  }
+  &__title {
+    font-family: Montserrat;
+    font-weight: 600;
+    font-size: 30px;
+    line-height: 1.22;
+    color: #fef5ff;
+    padding-bottom: 21px;
+    border-bottom: 3px solid #d7a6dc;
+    display: inline-block;
+    padding-top: 50px;
+    @media screen and (min-width: 640px) {
+      font-size: 36px;
+    }
+  }
+  &__wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-top: 30px;
+    @media screen and (min-width: 640px) {
+      flex-direction: row;
+      padding-bottom: 66px;
+    }
+  }
+}
+.ba-step {
+  display: flex;
+  text-align: left;
+  justify-content: center;
+  padding-bottom: 50px;
+  @media screen and (min-width: 640px) {
+    padding-bottom: 0;
+  }
+  &__number {
+    font-family: Roboto;
+    font-weight: 900;
+    font-size: 144px;
+    line-height: 1;
+    color: #696769;
+    @media screen and (min-width: 640px) {
+      font-size: 100px;
+    }
+    @media screen and (min-width: 1024px) {
+      font-size: 144px;
+    }
+  }
+  &__description {
+    font-family: Montserrat;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 1.25;
+    color: #fef5ff;
+    max-width: 120px;
+    padding-left: 13px;
+    padding-top: 20px;
+    @media screen and (min-width: 640px) {
+      padding-right: 15px;
+      font-size: 12px;
+    }
+    @media screen and (min-width: 1024px) {
+      padding-right: 0;
+      font-size: 16px;
+    }
+  }
+}
+//--------------= Contacts =------------------
+.ba-contact {
+	padding: 60px 0;
+	&__title{
+		font-family: Montserrat;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 28px;
+    line-height: 1.22;
+    text-align: justify;
+    color: #31302c;
+    padding-bottom: 15px;
+    border-bottom: 3px solid #d7a6dc;
+    display: inline-block;
+    margin-left: 20px;
+    @media screen and (min-width: 640px) {
+      margin-left: 0;
+      font-size: 36px;
+		line-height: 1.22;
+		margin-bottom: 30px;
+    }
+	}
+  &__wrapper {
+    display: flex;
+	 flex-direction: column;
+	 @media screen and (min-width:640px){
+		 flex-direction: row;
+		 height: 50vh;
+	 }
+  }
+  &__text-wrapper{
+	  width: 100%;
+	  display: flex;
+	  flex-direction: column;
+	  justify-content: center;
+	  color: #444444;
+	  padding-top: 35px;
+	  padding-bottom: 35px;
+	  @media screen and (min-width:640px){
+		width: 50%;
+		padding-top: 0;
+	  padding-bottom: 0;
+	  padding-right: 15px;
+	  }
+	  @media screen and (min-width:1024px){
+		padding-left: 25px; 
+	  }
+  }
+  &__map-wrapper{
+	width: 100%;
+	overflow: hidden;
+	@media screen and (min-width:640px){
+	 width: 50%;
+	}
+}
+&__map{
+	display: block;
+	height: 100%;
+	width: auto;
+	object-fit: cover;
+}
+  &__icon {
+    display: inline-block;
+    height: 24px;
+    width: 24px;
+	 margin-right: 20px;
+	 fill: #444444;
+  }
+  &__content {
+    display: flex;
+	 align-items: center;
+	 padding-bottom: 20px;
+  }
+  &__text {
+    font-family: Montserrat;
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 1.25;
+    display: inline-block;
+    @media screen and (min-width: 640px) {
+      font-size: 20px;
+      line-height: 1.2;
+    }
+  }
+  &__adress {
+    font-family: Montserrat;
+    font-weight: 500;
+    font-size: 13px;
+	 line-height: 1.25;
+	 @media screen and (min-width:640px){
+		font-size: 18px;
+	 }
+  }
+}
+.pin{
+	transform: scale(1.2);
+}
+.time {
+  padding-bottom: 0;
+  white-space: pre-line;
+}
+/* The popup bubble styling. */
+.popup-bubble {
+  /* Position the bubble centred-above its parent. */
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: translate(-50%, -100%);
+  /* Style the bubble. */
+  background-color: #444444;
+  overflow-y: auto;
+  &-anchor {
+    position: absolute;
+    width: 100%;
+    bottom: 25px;
+    left: 0;
+    &::after {
+      content: "";
+      position: absolute;
+      top: -2px;
+      left: 0;
+      /* Center the tip horizontally. */
+      transform: translate(-50%, 0);
+      /* The tip is a https://css-tricks.com/snippets/css/css-triangle/ */
+      width: 34px;
+      height: 20px;
+      /* The tip is 8px high, and 12px wide. */
+      border-left: 17px solid transparent;
+      border-right: 17px solid transparent;
+      border-top: 20px solid #444444;
+    }
+  }
+}
+/* JavaScript will position this div at the bottom of the popup tip. */
+.popup-container {
+  cursor: auto;
+  height: 0;
+  position: absolute;
+  width: 85%;
+  @media screen and (min-width: 480px) {
+    width: 337px;
+  }
+}
+//-----------------------= Footer =-----------------------
+.ba-footer {
+  background-color: #e5e5e5;
+  &__wrapper {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 50px;
+    padding-bottom: 40px;
+    border-bottom: 3px solid #696769;
+    text-align: center;
+    @media screen and (min-width: 640px) {
+      flex-direction: row;
+      padding-top: 50px;
+      text-align: left;
+      align-items: stretch;
+      padding-left: 94px;
+      padding-right: 95px;
+    }
+  }
+  &__title {
+    text-transform: uppercase;
+    font-family: Montserrat;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 1.25;
+    color: #31302c;
+    padding-bottom: 20px;
+  }
+  &__list {
+    list-style: none;
+  }
+  &__menu {
+    padding-bottom: 50px;
+    @media screen and (min-width: 640px) {
+      padding-bottom: 0;
+    }
+  }
+  &__socials {
+    padding-bottom: 50px;
+    @media screen and (min-width: 640px) {
+      padding-bottom: 0;
+    }
+  }
+  &__link {
+    text-decoration: none;
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 1.25;
+    text-transform: capitalize;
+	 color: #31302c;
+	 &:hover, &:active{
+		 text-decoration: underline;
+		 color: #c27eb7;
+	 }
+    &--menu {
+      font-weight: 400;
+    }
+  }
+  &__m-item {
+    padding-bottom: 10px;
+  }
+  &__item {
+    padding-bottom: 6px;
+  }
+  &__bottom {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    padding-top: 35px;
+    padding-bottom: 40px;
+    text-align: center;
+    @media screen and (min-width: 640px) {
+      flex-direction: row;
+      padding-top: 30px;
+      padding-bottom: 50px;
+      padding-left: 94px;
+      padding-right: 50px;
+    }
+  }
+  &__text {
+    font-family: Montserrat;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 15px;
+    color: #31302c;
+    padding-bottom: 20px;
+    &:last-child {
+      padding-bottom: 0;
+    }
+    @media screen and (min-width: 640px) {
+      padding-bottom: 0;
+    }
+  }
+}
+.hidden{
+	display: none;
+}
